@@ -1,0 +1,22 @@
+com.github.barteksc.pdfviewer
+attr sb_handlerColor
+attr sb_horizontal
+attr sb_indicatorColor
+attr sb_indicatorTextColor
+drawable current_path
+drawable default_scroll_handle_bottom
+drawable default_scroll_handle_left
+drawable default_scroll_handle_right
+drawable default_scroll_handle_top
+drawable ic_baseline_brightness_1_24
+drawable ic_cur_location
+drawable ic_curr_loc_blue
+drawable ic_ellipse
+drawable ic_record
+drawable map_unselected
+drawable new_track
+drawable record
+drawable track_on
+drawable track_unselected
+drawable tracking_point
+styleable ScrollBar sb_handlerColor sb_horizontal sb_indicatorColor sb_indicatorTextColor

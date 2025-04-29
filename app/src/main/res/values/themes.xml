@@ -1,0 +1,128 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GdalGIS" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--TextView Styles Bold-->
+    <style name="TVBold16" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!--TextView Styles Regular-->
+
+    <style name="TVRegular10" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/gibson_regular</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ETRegular10" parent="android:Widget.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/gibson_regular</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@drawable/bg_stroke_round_grey_8</item>
+    </style>
+
+    <style name="ThemeBtnBoldLarge" parent="android:Widget.Button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/gibson_bold</item>
+        <item name="android:textColor">@color/com_white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/theme_bg_solid_btn_grey_round_8</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+    <style name="BtnJoinNow" parent="android:Widget.Button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/com_white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/bg_gradient_btn_round_8</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+    <style name="BtnDownload" parent="android:Widget.Button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/com_white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/bg_gradient_btn_round_download</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+    <style name="BtnCancel" parent="android:Widget.Button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/btn_cancel</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_white_top_round_20</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <!--EditText Password Styles Regular-->
+    <style name="ETRegularMediumPass" parent="android:Widget.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/gibson_regular</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+
+    <style name="DialogFragmentTheme" parent="android:style/Theme.Translucent">
+        <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">#000000</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+</resources>

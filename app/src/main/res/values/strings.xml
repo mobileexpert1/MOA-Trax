@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">MOA TraX</string>
+    <!--    <string name="default_web_client_id" translatable="false">251011184814-f6dfc2tknb6p9fb9dfjk1vtbm70aigci.apps.googleusercontent.com</string>-->
+    <string name="welcome_note">X MARKS THE SPOT</string>
+    <string name="title">USE YOUR MY OUTDOOR AGENT ACCOUNT TO LOG IN</string>
+    <string name="login">Login</string>
+    <string name="cancel">Cancel</string>
+    <string name="email">Email Address</string>
+    <string name="enter_username_email">Enter here</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="or_continue_with">Or Continue With</string>
+    <string name="logout">Sign out</string>
+    <string name="logout_msg">You won\'t be able to sign in again without connectivity</string>
+    <string name="home_title">John Deo</string>
+    <string name="my_maps">My Maps</string>
+    <string name="home_title_no_pdf">Map Not Avaiable For Your Property</string>
+    <string name="no_map">No Maps</string>
+    <string name="map_title">Union, Arkansas.</string>
+    <string name="product_name">Northwest</string>
+    <string name="downloading">Download</string>
+    <string name="map_coordinates">26.8549° N, 75.8243° E</string>
+    <string name="facebook_app_id">366422348199329</string>
+    <string name="fb_login_protocol_scheme">fb366422348199329</string>
+    <string name="client_outh_id">982210164780-79fla4ipk9j2mnfec83hte35mtsc55gj.apps.googleusercontent.com</string>
+    <string name="my_tracks">Tracks</string>
+
+
+</resources>

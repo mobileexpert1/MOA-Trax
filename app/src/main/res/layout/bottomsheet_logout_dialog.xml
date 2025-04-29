@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/galleryBottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_top_round_20"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="30dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15sp"
+        android:background="@drawable/bg_solid_btn_grey_round_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvLogoutTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:text="@string/logout"
+        android:gravity="center"
+        android:textColor="@color/text_black"
+        android:fontFamily="@font/gibson_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewLine"/>
+
+    <TextView
+        android:id="@+id/tvLogoutMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/gibson_regular"
+        android:gravity="center"
+        android:text="@string/logout_msg"
+        android:textColor="@color/text_black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogoutTag" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="36dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogoutMsg">
+
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/BtnCancel"
+            android:layout_width="0dp"
+            android:layout_height="50sp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:fontFamily="@font/gibson_bold"
+            android:text="@string/cancel"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            style="@style/BtnJoinNow"
+            android:layout_width="0dp"
+            android:layout_height="50sp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:fontFamily="@font/gibson_bold"
+            android:text="@string/logout"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

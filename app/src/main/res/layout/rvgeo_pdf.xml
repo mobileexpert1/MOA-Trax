@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clToolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+     android:background="@color/purple_200"
+    android:orientation="horizontal"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/gibson_bold"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/product_name"
+        android:textColor="@color/text_black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/NoMapCV"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="12dp"
+         android:paddingHorizontal="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        android:layout_below="@+id/tvProductName"
+
+       >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp" >
+
+
+    <TextView
+        android:id="@+id/tvNotAvailable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/gibson_regular"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="MAP NOT AVAILABLE FOR YOUR PROPERTY."
+        android:textColor="@color/text_black"
+        android:textSize="12sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_map_files"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProductName"
+        tools:itemCount="2"
+        tools:listitem="@layout/rv_geo_pdf" />
+
+
+</RelativeLayout>

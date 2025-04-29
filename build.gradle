@@ -1,0 +1,47 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.5.30"
+    repositories {
+        maven { url "https://repo.grails.org/grails/core/" }
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }
+    }
+    dependencies {
+//        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath "com.android.tools.build:gradle:8.1.4" // Check the latest compatible version
+
+//      classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30"
+
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+
+       // classpath 'com.google.gms:google-services:4.3.8'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://repo.grails.org/grails/core/" }
+        google()
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        flatDir { dirs 'src/main/libs' }
+        maven { url 'https://maven.google.com' }
+//        maven {
+//            url = uri("https://plugins.gradle.org/m2/")
+//        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+//apply(plugin = "com.jfrog.bintray")
