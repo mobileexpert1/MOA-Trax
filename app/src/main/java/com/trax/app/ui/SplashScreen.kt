@@ -7,6 +7,7 @@ import android.os.Handler
 import com.trax.app.R
 import com.trax.app.activities.LoginActivity
 import com.trax.app.activities.MainActivity
+import com.trax.app.activities.WelcomeActivity
 import com.trax.app.utils.AppConstant
 import com.trax.app.utils.PrefManager
 
@@ -23,7 +24,7 @@ class SplashScreen : AppCompatActivity() {
                     finish()
                 }
                 else{
-                    val intent = Intent(this, LoginActivity::class.java)
+                    val intent = Intent(this, WelcomeActivity::class.java)
                     startActivity(intent)
                     finish()
                 }

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_top_round_white">
+
+    <View
+        android:layout_width="28dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_line"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_track"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Track Name -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/track_name"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_bold"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        style="@style/ETBackgroundStroke"
+        android:id="@+id/tvTrackName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:paddingStart="10dp"
+        android:text="Cedar Ridge Hollow — May 20"/>
+    <!-- Notes -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notes_optional"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_bold"
+        android:layout_marginTop="18dp"/>
+    <EditText
+        style="@style/ETBackgroundStroke"
+        android:id="@+id/etNotes"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:gravity="top"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:hint="write notes here.."
+        android:inputType="textMultiLine"/>
+
+    <!-- Stats -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="4">
+
+        <!-- Distance -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_stats_card">
+            <TextView
+                android:id="@+id/tvDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.58km"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distance"
+                android:textColor="@color/textview_gray"
+                android:textSize="9sp"
+                android:fontFamily="@font/inter_regular"/>
+        </LinearLayout>
+
+        <!-- Duration -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_stats_card">
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0:27"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duration"
+                android:textColor="@color/textview_gray"
+                android:textSize="9sp"
+                android:fontFamily="@font/inter_regular"/>
+        </LinearLayout>
+
+        <!-- Pace -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_stats_card">
+            <TextView
+                android:id="@+id/tvPace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.3/km"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pace"
+                android:textColor="@color/textview_gray"
+                android:textSize="9sp"
+                android:fontFamily="@font/inter_regular"/>
+
+        </LinearLayout>
+
+        <!-- Elevation -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_stats_card">
+            <TextView
+                android:id="@+id/tvElevation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65m"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/elv"
+                android:textColor="@color/textview_gray"
+                android:textSize="9sp"
+                android:fontFamily="@font/inter_regular"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            android:id="@+id/tvCancel"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_outline_button"
+            android:text="@string/cancel"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginHorizontal="5dp"
+            android:fontFamily="@font/inter_semibold" />
+        <TextView
+            android:id="@+id/tvSave"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_green_button"
+            android:text="@string/save_track"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="5dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/inter_semibold" />
+
+    </LinearLayout>
+</LinearLayout>

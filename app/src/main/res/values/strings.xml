@@ -5,7 +5,7 @@
     <string name="title">USE YOUR MY OUTDOOR AGENT ACCOUNT TO LOG IN</string>
     <string name="login">Login</string>
     <string name="cancel">Cancel</string>
-    <string name="email">Email Address</string>
+    <string name="email_address">Email Address</string>
     <string name="enter_username_email">Enter here</string>
     <string name="password">Password</string>
     <string name="remember_me">Remember Me</string>
@@ -24,6 +24,66 @@
     <string name="fb_login_protocol_scheme">fb366422348199329</string>
     <string name="client_outh_id">982210164780-79fla4ipk9j2mnfec83hte35mtsc55gj.apps.googleusercontent.com</string>
     <string name="my_tracks">Tracks</string>
-
+    <string name="sign_in_with_google">Sign in With Google</string>
+    <string name="sign_in_with_email">Sign in With Email</string>
+    <string name="by_continuing_you_agree_to_our_term">
+    By continuing you agree to our Terms &amp; Privacy Policy.
+</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="log_in">Log In</string>
+    <string name="email">Email</string>
+    <string name="sign_in_to_your_naccount">Sign in to your\nAccount</string>
+    <string name="enter_your_email_and_password_to_log_in">Enter your email and password to log in</string>
+    <string name="my_tracks_">My Tracks</string>
+    <string name="trax_will_begin_recording_your_gps_path_keep_the_app_open_for_best_accuracy">TraX will begin recording your GPS path. Keep the app open for best accuracy.</string>
+    <string name="no_path_has_been_recorded_yet_are_you_sure_you_want_to_stop">No path has been recorded yet. Are you sure you want to stop?</string>
+    <string name="discard_tracking">Discard Tracking?</string>
+    <string name="stop">Stop</string>
+    <string name="start">Start</string>
+    <string name="start_tracking">Start Tracking?</string>
+    <string name="acres">ACRES</string>
+    <string name="valid">VALID</string>
+    <string name="map">MAP</string>
+    <string name="time">Time</string>
+    <string name="offline">Offline</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="personal_information">PERSONAL INFORMATION</string>
+    <string name="name">Name</string>
+    <string name="signed_in_with_google">Signed in with google</string>
+    <string name="distance">DISTANCE</string>
+    <string name="duration">DURATION</string>
+    <string name="pace">PACE</string>
+    <string name="elv">ELV</string>
+    <string name="export_png">Export PNG</string>
+    <string name="share">Share</string>
+    <string name="delete_track">Delete Track</string>
+    <string name="profile">Profile</string>
+    <string name="edit">Edit</string>
+    <string name="offline_storage">Offline Storage</string>
+    <string name="logout_">Logout</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="save_track">Save Track</string>
+    <string name="track_name">Track name</string>
+    <string name="notes_optional">Notes (optional)</string>
+    <string name="enter_name">Enter name</string>
+    <string name="private_public_land_lines"><![CDATA[Private & Public land lines]]></string>
+    <string name="hiking_and_vehicle_paths">Hiking and vehicle paths</string>
+    <string name="trails_roads"><![CDATA[Trails & Roads]]></string>
+    <string name="water_features">Water Features</string>
+    <string name="rivers_lakes_and_springs">Rivers, lakes, and springs</string>
+    <string name="points_of_interest">Points of Interest</string>
+    <string name="campsites_and_viewpoints">Campsites and Viewpoints</string>
+    <string name="property_boundary">Property Boundary</string>
+    <string name="your_recent_activity_path">Your recent activity path</string>
+    <string name="recorded_track">Recorded Track</string>
+    <string name="properties">PROPERTIES</string>
+    <string name="my_properties">My Properties</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save_the_track_to_access_it_at_any_time">Save the track to access it at any time.</string>
+    <string name="do_you_want_to_save_nthis_track">Do you want to save\nthis track?</string>
+    <string name="location_permission_is_required_to_use_this_app">Location permission is required to use this app.</string>
 
 </resources>

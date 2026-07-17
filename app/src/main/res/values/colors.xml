@@ -9,14 +9,45 @@
     <color name="text_black">#171717</color>
     <color name="white">#FFFFFFFF</color>
     <color name="progressing">#AAC3CE</color>
-    <color name="open">#00937B</color>
-    <color name="green_home">#029378</color>
+    <color name="open">#007F56</color>
+    <color name="green_home">#007F56</color>
 
     <!--Common Colors-->
     <color name="com_white">#FFFFFF</color>
 
     <!--Must be in night mode also-->
-    <color name="textColor">#171717</color>
+    <color name="textColor">#1A1C1E</color>
     <color name="black_p50">#82000000</color>
     <color name="themeButtonBack">#AAC3CE</color>
+    <color name="green">#007F56</color>
+    <color name="gray_light">#DDE3E8</color>
+
+    <!-- Brand -->
+    <color name="primary_green">#3DAB6E</color>
+    <color name="primary_green_dark">#2E8A57</color>
+    <color name="primary_green_light">#EAF7EF</color>
+
+    <!-- Backgrounds -->
+    <color name="background">#F5F5F5</color>
+    <color name="surface">#FFFFFF</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#757575</color>
+    <color name="textview_gray">#6C7278</color>
+    <color name="text_hint">#BDBDBD</color>
+
+    <!-- Navigation -->
+    <color name="nav_icon_inactive">#9E9E9E</color>
+    <color name="nav_icon_active">#007F56</color>
+
+    <!-- Divider -->
+    <color name="divider">#EEEEEE</color>
+
+    <!-- Card shadow -->
+    <color name="card_shadow">#1A000000</color>
+
+    <color name="color_light_gray">#CCFFFFFF</color>
+    <color name="color_cyan">#E2F2F0</color>
+
 </resources>

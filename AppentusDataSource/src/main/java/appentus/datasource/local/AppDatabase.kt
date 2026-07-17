@@ -13,7 +13,7 @@ import com.iFollow.dataSource.local.convertors.Converters
         EntityRemoteKeys::class, EntityGeoPDF::class, EntitySavePdf::class, EntityMapFile::class,
         EntityMapTrackingFile::class, EntitySavedTrackingPdf::class,
 
-        ), version = 8,exportSchema = true
+        ), version = 9,exportSchema = true
 )
 
 @TypeConverters(Converters::class)
@@ -42,5 +42,4 @@ abstract class AppDatabase : RoomDatabase() {
             Room.databaseBuilder(appContext, AppDatabase::class.java, "appentus_orbis_inc")
                 .allowMainThreadQueries().fallbackToDestructiveMigration().build()
     }
-
 }

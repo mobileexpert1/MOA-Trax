@@ -18,12 +18,12 @@ data class EntityGeoPDF(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     var fileName: String? = "",
-    val localTiffPath: String? = "",
-    val localPngPath: String? = "",
-    val localPdfPath: String? = "",
+    var localTiffPath: String? = "",
+    var localPngPath: String? = "",
+    var localPdfPath: String? = "",
     var remoteTiffPath: String? = "",
     var created: String = "",
-    val status: Int? = 0
+    var status: Int? = 0
 )
 
 
@@ -43,7 +43,7 @@ data class EntitySavePdf(
     var productNo: String? = "",
     var displayName: String? = "",
     var isSavedTracking: Boolean = false,
-     var userIdList: ArrayList<String>?
+     var userIdList: List<String>?
 )
 /*var userId: String? =" "*/
 @Entity(tableName = "allMapPdfs")
@@ -56,6 +56,9 @@ data class EntityMapFile(
     var mapInfoJason: String? = "",
     var status: Int? = 0,
     var latLngJsonString: String? = "",
+
+    // ✅ NEW
+    var savedDate: String? = ""
 )
 
 @Entity(tableName = "allTrackingPdfs")
@@ -81,5 +84,8 @@ data class EntityMapTrackingFile(
     var mapInfoJason: String? = "",
     var status: Int? = 0,
     var latLngJsonString: String? = "",
-    var userIdList: ArrayList<String>?
+    var userIdList: List<String>?,
+
+    // ✅ NEW FIELD
+    var savedDate: String? = ""   // store date here
 )

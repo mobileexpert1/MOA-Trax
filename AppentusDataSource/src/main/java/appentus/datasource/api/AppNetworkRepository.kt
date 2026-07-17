@@ -19,6 +19,7 @@ public class AppNetworkRepository() : BaseDataSource() {
                 apiService.getAllMaps(token)
             }
         }
+
     fun loginWithSocialMedia(tag: String, requestBody: RequestBody?) =
         performOperation(tag) {
             getResult(tag) {

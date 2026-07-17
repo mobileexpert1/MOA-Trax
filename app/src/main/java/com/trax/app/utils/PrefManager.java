@@ -44,5 +44,22 @@ public class PrefManager {
         editor.commit();
     }
 
+    public static void saveLicensesList(java.util.List<com.trax.app.models.home.license.LicenseModel> list) {
+        String json = new com.google.gson.Gson().toJson(list);
+        putString("licenses_list", json);
+    }
+
+    public static java.util.List<com.trax.app.models.home.license.LicenseModel> getLicensesList() {
+        String json = getString("licenses_list");
+        if (json.isEmpty()) {
+            return null;
+        }
+        java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<com.trax.app.models.home.license.LicenseModel>>(){}.getType();
+        return new com.google.gson.Gson().fromJson(json, type);
+    }
+
+    public static void clearLicensesList() {
+        clearKey("licenses_list");
+    }
 
 }

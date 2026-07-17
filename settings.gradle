@@ -1,4 +1,3 @@
 rootProject.name = "Orbis Inc"
 include ':AppentusDataSource'
 include ':app'
-include ':android-pdf-viewer'

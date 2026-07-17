@@ -86,7 +86,7 @@ interface DaoSavePdf {
      fun updateSaveMapData(productId: Int, isSavedTracking: Boolean)
 
     @Query("UPDATE allPdfs set userIdList= :userIdList  WHERE productId = :productId")
-     fun updateId(productId: Int, userIdList: ArrayList<String>?)
+     fun updateId(productId: Int, userIdList: List<String>?)
 }
 
 @Dao
@@ -102,6 +102,9 @@ interface DaoSaveMapPdf {
 
     @Query("SELECT * FROM allMapPdfs WHERE productId = :id")
     fun getAllSaveMapPdf(id: Int): List<EntityMapFile>?
+
+    @Query("SELECT * FROM allMapPdfs")
+    fun getAllSaveMapPdf(): List<EntityMapFile>?
 
     @Query("DELETE FROM allMapPdfs")
      fun clearSavePdf()

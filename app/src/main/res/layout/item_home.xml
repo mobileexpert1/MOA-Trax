@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="15dp"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="23dp"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- More Menu -->
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_more_dot"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone" />
+
+        <!-- Top Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Property Image -->
+            <ImageView
+                android:id="@+id/ivProperty"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dummy_image_home_item"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- Property Name -->
+            <TextView
+                android:id="@+id/tvPropertyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Cedar Ridge Hollow"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"
+                app:layout_constraintTop_toTopOf="@id/ivProperty"
+                app:layout_constraintStart_toEndOf="@id/ivProperty"
+                app:layout_constraintEnd_toStartOf="@id/layoutOpenMap" />
+
+            <!-- Location -->
+            <LinearLayout
+                android:id="@+id/layoutLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@id/tvPropertyName"
+                app:layout_constraintTop_toBottomOf="@id/tvPropertyName">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_track_location" />
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="Madison County, GA"
+                    android:textColor="#7A7A7A"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_regular" />
+
+            </LinearLayout>
+
+            <!-- Acres -->
+
+            <TextView
+                android:id="@+id/tvAcres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:background="@drawable/bg_acress"
+                android:textSize="10sp"
+                android:text="480 ac"
+                android:gravity="center"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="5dp"
+                android:fontFamily="@font/inter_regular"
+                app:layout_constraintTop_toBottomOf="@+id/ivProperty"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <!-- Open Map Section -->
+
+            <LinearLayout
+                android:id="@+id/layoutOpenMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/layoutLocation"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_open_map" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Open Map"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

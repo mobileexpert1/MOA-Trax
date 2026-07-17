@@ -2,6 +2,7 @@ package com.trax.app.utils
 
 object AppConstant {
 
+
     var CredentialsRemember = false
     const val CURRENT_USER ="user"
     const val EMAIL = "email"
@@ -14,6 +15,8 @@ object AppConstant {
     const val USER_PROFILE_ID = "profile_id"
     const val User_list = "user_List"
     const val AUTH_TOKEN = "auth_token"
+
+    const val DEVICE_TOKEN = "device_token"
 
 
     var DOWNLOAD_ID = ""

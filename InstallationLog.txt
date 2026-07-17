@@ -1,0 +1,8 @@
+************************************* Invoked: Thu Apr 30 20:31:52 2026
+[0] Arguments: C:\Users\Honey\AppData\Local\Temp\msys2-installer.exe, install, --root, C:\msys64, --confirm-command
+[9] Operations sanity check succeeded.
+[32] Using metadata cache from "C:/Users/Honey/AppData/Local/cache\\qt-installer-framework\\d75f1c19-3379-3717-ae8d-1404b51494a9"
+[32] Found 0 cached items.
+[38] Loaded control script ":/metadata/installer-config/control_js"
+[39] TargetDirectoryInUse : Error : The directory you selected already exists and contains an installation. Choose a different target for installation.
+[40] Answer: "Ok"

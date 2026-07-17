@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_top_round_white">
+
+    <!-- View line -->
+    <View
+        android:layout_width="28dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_line"/>
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="18dp"
+        android:text="Map Layers"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:fontFamily="@font/inter_bold" />
+
+    <!-- BASE MAP -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="BASE MAP"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:fontFamily="@font/inter_regular" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <!-- Topographic -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_topographic"
+                    app:shapeAppearanceOverlay="@style/RoundedImage12" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="6dp"
+                    android:src="@drawable/ic_check_green" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Topographic"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_semibold" />
+
+        </LinearLayout>
+
+        <!-- Satellite -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_satellite"
+                app:shapeAppearanceOverlay="@style/RoundedImage12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Satellite"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_regular" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- OVERLAYS -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="OVERLAYS"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:fontFamily="@font/inter_regular" />
+
+    <!-- Property Boundary -->
+
+    <include layout="@layout/item_layer_property_boundary" />
+
+    <!-- Trails -->
+
+    <include layout="@layout/item_layer_trails_and_roads" />
+
+    <!-- Water -->
+
+    <include layout="@layout/item_layer_water_feature" />
+
+    <!-- POI -->
+
+    <include layout="@layout/item_layer_points_of_interest" />
+
+    <!-- Recorded Track -->
+
+    <include layout="@layout/item_layer_recorded_track" />
+
+    <!-- Button -->
+
+    <TextView
+        android:id="@+id/btnApply"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_green_button"
+        android:gravity="center"
+        android:text="Apply Changes"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:fontFamily="@font/inter_semibold" />
+
+</LinearLayout>

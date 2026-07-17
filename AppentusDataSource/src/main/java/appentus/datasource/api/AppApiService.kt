@@ -1,8 +1,8 @@
 package appentus.datasource.api
 
 import appentus.datasource.BuildConfig
-import appentus.datasource.api.models.home.AllMapBaseBean
-import appentus.datasource.api.models.login.LoginBase
+import appentus.datasource.api.models.home.AllMapBaseResponse
+import appentus.datasource.api.models.login.LoginResponse
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,30 +19,25 @@ interface AppApiService {
     @POST(BASE_URL_2 + "api/account/Authorize")
     suspend fun userLogin(
         @Body requestBody: RequestBody?
-    ): Response<LoginBase>
+    ): Response<LoginResponse>
 
     @GET(BASE_URL_2 + "api/property/mapfiles")
     suspend fun getAllMaps(
         @Header("Authorization") header: String
-    ): Response<AllMapBaseBean>
+    ): Response<AllMapBaseResponse>
 
     @POST(BASE_URL_2 + "api/account/Authorize")
     suspend fun loginWithSocialMedia(
         @Body requestBody: RequestBody?
-    ): Response<LoginBase>
+    ): Response<LoginResponse>
 
     companion object {
-
-        val API_LOGIN = "login"
-        val API_GET_MAPS = "mapfiles"
-
-
 
         // private const val BASE_URL = "http://18.189.188.114:3000/"
 
      //  private const val BASE_URL = "https://services.myoutdooragent.com/"
 
-//        private const val BASE_URL = "https://datav2.myoutdooragent.com/"
+   //     private const val BASE_URL = "https://datav2.myoutdooragent.com/"
         private const val BASE_URL = "https://services.myoutdooragent.com/"
         private const val BASE_URL_2 = BASE_URL
       //  private const val BASE_URL_2 = BuildConfig.API_URL

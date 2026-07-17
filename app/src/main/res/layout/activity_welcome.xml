@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WelcomeActivity">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/imgBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/welcome_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Bottom Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:padding="22dp"
+        android:background="@drawable/login_background_gradient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Google Button -->
+
+        <RelativeLayout
+            android:id="@+id/rlGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_white_rounded"
+            app:layout_constraintBottom_toTopOf="@+id/rlEmail"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
+            >
+
+
+        <ImageView
+               android:id="@+id/ivGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_google_icon_new"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                />
+
+        <TextView
+            style="@style/TVBold14"
+            android:layout_toEndOf="@+id/ivGoogle"
+            android:background="@drawable/bg_white_rounded"
+            android:text="@string/sign_in_with_google"
+            android:textAllCaps="false"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+           />
+
+        </RelativeLayout>
+
+        <!-- Email Button -->
+        <RelativeLayout
+            android:id="@+id/rlEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/rlGoogle"
+            android:background="@drawable/bg_white_rounded"
+            app:layout_constraintBottom_toTopOf="@+id/txtLogin"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            >
+
+
+            <ImageView
+                android:id="@+id/ivEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_email_icon"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                style="@style/TVBold14"
+                android:layout_toEndOf="@+id/ivEmail"
+                android:background="@drawable/bg_white_rounded"
+                android:text="@string/sign_in_with_email"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+               />
+
+        </RelativeLayout>
+
+        <!-- Bottom Text -->
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/by_continuing_you_agree_to_our_term"
+            android:textColor="@color/white"
+            android:layout_below="@+id/rlEmail"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

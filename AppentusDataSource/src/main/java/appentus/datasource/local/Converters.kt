@@ -31,9 +31,9 @@ class Converters {
     }
 
     @TypeConverter
-    fun to(jsonData: String?): ArrayList<String>? {
+    fun to(jsonData: String?): List<String>? {
         val gson = Gson()
-        val listType: Type = object : TypeToken<List<String?>?>() {}.type
+        val listType: Type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(jsonData, listType)
     }
 }

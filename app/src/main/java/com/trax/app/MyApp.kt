@@ -6,6 +6,8 @@ import android.util.Log
 import appentus.datasource.local.AppDatabase
 import appentus.datasource.api.AppNetworkRepository
 import com.downloader.PRDownloader
+import com.mapbox.common.MapboxOptions
+import com.trax.app.utils.MapboxConfig
 import com.trax.app.utils.PrefManager
 import retrofit2.http.Tag
 
@@ -29,6 +31,9 @@ class MyApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        MapboxOptions.accessToken = MapboxConfig.ACCESS_TOKEN
+
         instance = this
         PRDownloader.initialize(applicationContext)
         networkRepository = AppNetworkRepository()
