@@ -12,11 +12,11 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
 
-        <!-- White status bar -->
-        <item name="android:statusBarColor">@android:color/white</item>
+        <!-- Green status bar -->
+        <item name="android:statusBarColor">#007F56</item>
 
-        <!-- Dark icons (for Android 6+) -->
-        <item name="android:windowLightStatusBar">true</item>
+        <!-- White icons (for Android 6+) -->
+        <item name="android:windowLightStatusBar">false</item>
 
     </style>
 

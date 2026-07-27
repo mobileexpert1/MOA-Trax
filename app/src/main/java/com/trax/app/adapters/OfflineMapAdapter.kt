@@ -3,29 +3,27 @@ package com.trax.app.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.trax.app.R
 import com.trax.app.databinding.ItemHomeBinding
 import com.trax.app.models.home.license.LicenseModel
 
-class HomeAdapter(
+class OfflineMapAdapter(
     private val list: MutableList<LicenseModel>,
-    private val listener: PropertyClickListener
-) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    private val listener: OfflineMapClickListener
+) : RecyclerView.Adapter<OfflineMapAdapter.ViewHolder>() {
 
     //==============================================================================
     // Interfaces & Inner Classes
     //==============================================================================
 
-    interface PropertyClickListener {
-        fun onMoreClick(item: LicenseModel)
+    interface OfflineMapClickListener {
+        fun onDeleteClick(item: LicenseModel)
         fun onOpenMapClick(item: LicenseModel)
-        fun onDownloadClick(item: LicenseModel)
     }
 
     inner class ViewHolder(
         val binding: ItemHomeBinding
     ) : RecyclerView.ViewHolder(binding.root)
-
-    private val downloadingProducts = mutableSetOf<String>()
 
     //==============================================================================
     // Adapter Overrides
@@ -47,7 +45,7 @@ class HomeAdapter(
     }
 
     //--------------------------------------------------
-    // Binds property information and download states to views.
+    // Binds the license data to the item view elements.
     //--------------------------------------------------
     override fun onBindViewHolder(
         holder: ViewHolder,
@@ -73,38 +71,20 @@ class HomeAdapter(
 
             tvAcres.text = "${property?.acres ?: 0} acres"
 
-            val productNo = property?.productNo ?: ""
-            val isDownloaded = com.trax.app.utils.PrefManager.isProductDownloaded(productNo)
-            val isDownloading = downloadingProducts.contains(productNo)
+            layoutDownloadMap.visibility = android.view.View.VISIBLE
+            layoutDownloadedStatus.visibility = android.view.View.GONE
+            pbDownloadLoader.visibility = android.view.View.GONE
+            ivDownloadIcon.visibility = android.view.View.VISIBLE
+            
+            layoutDownloadMap.setBackgroundResource(R.drawable.bg_red_button)
+            ivDownloadIcon.setImageResource(R.drawable.ic_delete)
+            ivDownloadIcon.imageTintList = android.content.res.ColorStateList.valueOf(android.graphics.Color.WHITE)
+            tvDownloadText.text = "Delete"
+            layoutDownloadMap.isEnabled = true
+            layoutDownloadMap.isClickable = true
 
-            if (isDownloaded) {
-                layoutDownloadMap.visibility = android.view.View.GONE
-                layoutDownloadedStatus.visibility = android.view.View.VISIBLE
-            } else {
-                layoutDownloadMap.visibility = android.view.View.VISIBLE
-                layoutDownloadedStatus.visibility = android.view.View.GONE
-
-                if (isDownloading) {
-                    pbDownloadLoader.visibility = android.view.View.VISIBLE
-                    ivDownloadIcon.visibility = android.view.View.GONE
-                    tvDownloadText.text = "Downloading..."
-                    layoutDownloadMap.isEnabled = false
-                    layoutDownloadMap.isClickable = false
-                    layoutDownloadMap.setOnClickListener(null)
-                } else {
-                    pbDownloadLoader.visibility = android.view.View.GONE
-                    ivDownloadIcon.visibility = android.view.View.VISIBLE
-                    tvDownloadText.text = "Download"
-                    layoutDownloadMap.isEnabled = true
-                    layoutDownloadMap.isClickable = true
-                    layoutDownloadMap.setOnClickListener {
-                        listener.onDownloadClick(item)
-                    }
-                }
-            }
-
-            ivMore.setOnClickListener {
-                listener.onMoreClick(item)
+            layoutDownloadMap.setOnClickListener {
+                listener.onDeleteClick(item)
             }
 
             clTop.setOnClickListener {
@@ -119,23 +99,11 @@ class HomeAdapter(
     override fun getItemCount() = list.size
 
     //==============================================================================
-    // List Helper / State Functions
+    // List Helper Functions
     //==============================================================================
 
     //--------------------------------------------------
-    // Updates active product downloading collection cache.
-    //--------------------------------------------------
-    fun setDownloading(productNo: String, isDownloading: Boolean) {
-        if (isDownloading) {
-            downloadingProducts.add(productNo)
-        } else {
-            downloadingProducts.remove(productNo)
-        }
-        notifyDataSetChanged()
-    }
-
-    //--------------------------------------------------
-    // Updates the adapter datasets list and refreshes UI.
+    // Updates the list items data and refreshes UI.
     //--------------------------------------------------
     fun submitList(data: List<LicenseModel>) {
         list.clear()

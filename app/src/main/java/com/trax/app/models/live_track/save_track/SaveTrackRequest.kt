@@ -7,7 +7,10 @@ data class SaveTrackRequest(
     val startedAtUtc: String,
     val endedAtUtc: String,
     val totalDistanceMeters: Double,
-    val trackLine: TrackLine
+    val trackLine: TrackLine,
+    val pace: Double? = null,
+    val elevation: Double? = null,
+    val durationSeconds: Long? = null
 )
 
 data class TrackLine(

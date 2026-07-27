@@ -27,9 +27,9 @@ data class TrackFeature(
 
 data class TrackProperties(
 
-    val trackId: Int,
+    val trackId: Int = 0,
 
-    val licenseContractId: Int,
+    val licenseContractId: Int = 0,
 
     val trackName: String?,
 
@@ -52,10 +52,18 @@ data class TrackProperties(
     val stroke: String?,
 
     @SerializedName("stroke-width")
-    val strokeWidth: Int,
+    val strokeWidth: Int = 2,
 
     @SerializedName("stroke-opacity")
-    val strokeOpacity: Double
+    val strokeOpacity: Double = 1.0,
+
+    val pace: String? = null,
+
+    val elevation: String? = null,
+
+    var isOfflineTrack: Boolean = false,
+
+    val offlineId: String? = null
 )
 
 data class TrackGeometry(

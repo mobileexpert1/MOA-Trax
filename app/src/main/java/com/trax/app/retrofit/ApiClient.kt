@@ -12,24 +12,33 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    fun getApiClient(): ApiInterface? {
-        val gson=GsonBuilder().setLenient().create()
+    //==============================================================================
+    // Network Client Builders
+    //==============================================================================
 
-        val httpClient=OkHttpClient.Builder().connectTimeout(3,TimeUnit.MINUTES)
-            .writeTimeout(3,TimeUnit.MINUTES)
-            .readTimeout(3,TimeUnit.MINUTES)
+    //--------------------------------------------------
+    // What it does: Configures and returns standard OkHttpClient and Retrofit client instances.
+    // When it is called: Triggered when user login / registration operations are dispatching.
+    // Why it is required: Builds unauthenticated service interfaces.
+    //--------------------------------------------------
+    fun getApiClient(): ApiInterface? {
+        val gson = GsonBuilder().setLenient().create()
+
+        val httpClient = OkHttpClient.Builder()
+            .connectTimeout(3, TimeUnit.MINUTES)
+            .writeTimeout(3, TimeUnit.MINUTES)
+            .readTimeout(3, TimeUnit.MINUTES)
 
         httpClient.addInterceptor { chain ->
             val newRequest = chain.request().newBuilder()
                 .addHeader("Content-Type", "application/json; charset=utf-8")
                 .build()
             chain.proceed(newRequest)
+        }
 
-        }.build()
-
-        val interceptor= HttpLoggingInterceptor()
-        interceptor.level=HttpLoggingInterceptor.Level.BODY
-
+        val interceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
         httpClient.addInterceptor(interceptor)
 
         val retrofit = Retrofit.Builder()
@@ -41,13 +50,19 @@ object ApiClient {
         return retrofit.create(ApiInterface::class.java)
     }
 
+    //--------------------------------------------------
+    // What it does: Configures and returns OkHttpClient and Retrofit clients holding active bearer auth tokens.
+    // When it is called: Triggered when invoking authenticated calls (e.g. tracks, profile detail operations).
+    // Why it is required: Submits token headers matching active logged user sessions.
+    //--------------------------------------------------
     @SuppressLint("SuspiciousIndentation")
-    fun getApiClientWithHeader(token:String): ApiInterface? {
-        val gson=GsonBuilder().setLenient().create()
+    fun getApiClientWithHeader(token: String): ApiInterface? {
+        val gson = GsonBuilder().setLenient().create()
 
-        val httpClient=OkHttpClient.Builder().connectTimeout(3,TimeUnit.MINUTES)
-            .writeTimeout(3,TimeUnit.MINUTES)
-            .readTimeout(3,TimeUnit.MINUTES)
+        val httpClient = OkHttpClient.Builder()
+            .connectTimeout(3, TimeUnit.MINUTES)
+            .writeTimeout(3, TimeUnit.MINUTES)
+            .readTimeout(3, TimeUnit.MINUTES)
 
         httpClient.addInterceptor { chain ->
             val newRequest = chain.request().newBuilder()
@@ -55,12 +70,11 @@ object ApiClient {
                 .addHeader("Authorization", "Bearer $token")
                 .build()
             chain.proceed(newRequest)
+        }
 
-        }.build()
-
-        val interceptor= HttpLoggingInterceptor()
-        interceptor.level=HttpLoggingInterceptor.Level.BODY
-
+        val interceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
         httpClient.addInterceptor(interceptor)
 
         val retrofit = Retrofit.Builder()

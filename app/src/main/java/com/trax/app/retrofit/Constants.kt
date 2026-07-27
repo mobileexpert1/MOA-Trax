@@ -19,4 +19,6 @@ object Constants {
     const val GET_TRACK = "api/trax/gettrack/{trackId}"
 
     const val DELETE_TRACK = "api/trax/deletetrack/{trackId}"
+
+    const val PDF_TRACK = "api/trax/TrackPdf/{trackId}"
 }

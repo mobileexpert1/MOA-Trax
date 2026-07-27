@@ -130,6 +130,75 @@
 
             </LinearLayout>
 
+            <!-- Download Map Button -->
+            <LinearLayout
+                android:id="@+id/layoutDownloadMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_green_button"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/pbDownloadLoader"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:visibility="gone"
+                    android:indeterminateTint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/ivDownloadIcon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_download"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvDownloadText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Download"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_bold" />
+
+            </LinearLayout>
+
+            <!-- Downloaded Status Badge -->
+            <LinearLayout
+                android:id="@+id/layoutDownloadedStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_date_badge"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_check_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Downloaded"
+                    android:textColor="#007F56"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_bold" />
+
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>

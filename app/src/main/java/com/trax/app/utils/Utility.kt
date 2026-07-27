@@ -11,7 +11,14 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 object Utility {
 
-    fun getBoundingViewRect(view : View): Rect {
+    //==============================================================================
+    // View Functions
+    //==============================================================================
+
+    //--------------------------------------------------
+    // Calculates the boundaries rectangle coordinates of a view on the device screen.
+    //--------------------------------------------------
+    fun getBoundingViewRect(view: View): Rect {
         val l = IntArray(2)
         view.getLocationOnScreen(l)
         return Rect(
@@ -22,10 +29,25 @@ object Utility {
         )
     }
 
-    fun isValidEmail(target: String?): Boolean? {
+    //==============================================================================
+    // Validation Functions
+    //==============================================================================
+
+    //--------------------------------------------------
+    // Validates if the target string matches standard email regex specifications.
+    //--------------------------------------------------
+    fun isValidEmail(target: String?): Boolean {
+        if (target == null) return false
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }
 
+    //==============================================================================
+    // Serialization Functions
+    //==============================================================================
+
+    //--------------------------------------------------
+    // Serializes parameter maps into HTTP application/json RequestBody entities.
+    //--------------------------------------------------
     fun convertToRequestBody(params: Map<String, Any>): RequestBody? {
         var requestBody: RequestBody? = null
         try {
@@ -35,10 +57,5 @@ object Utility {
             e.printStackTrace()
         }
         return requestBody
-    }
-
-    fun validEmail(email: String?): Boolean {
-        val pattern = Patterns.EMAIL_ADDRESS
-        return pattern.matcher(email!!).matches()
     }
 }

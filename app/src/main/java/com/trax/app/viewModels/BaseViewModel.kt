@@ -1,18 +1,20 @@
 package com.trax.app.viewModels
 
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.myoutdoor.agent.retrofit.ApiClient
-import com.myoutdoor.agent.retrofit.ResponseHandler
-import kotlinx.coroutines.launch
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 
 open class BaseViewModel : ViewModel() {
 
-    var apiError= MutableLiveData<String>()
-    var isLoading= MutableLiveData<Boolean>()
+    //==============================================================================
+    // Shared Observables
+    //==============================================================================
 
+    // Holds network/API error messages for subscriber activities/fragments
+    var apiError = MutableLiveData<String>()
+
+    // Controls progress loader display state visibilities
+    var isLoading = MutableLiveData<Boolean>()
+
+    // Flag signifying 401 session expiration occurrences
+    val unauthorizedError = MutableLiveData<Boolean>()
 }

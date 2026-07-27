@@ -10,97 +10,95 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : BaseViewModel() {
 
-    val licenseSuccess =
-        MutableLiveData<LicenseResponse?>()
+    //==============================================================================
+    // Variables
+    //==============================================================================
 
+    val licenseSuccess = MutableLiveData<LicenseResponse?>()
     val trackSuccess = MutableLiveData<GetTracksResponse?>()
 
-    //**  get licenses  **//
+    //==============================================================================
+    // API Calls
+    //==============================================================================
+
+    //--------------------------------------------------
+    // Dispatches network getLicenses request to retrieve user property active leases details.
+    //--------------------------------------------------
     fun getLicenses(token: String) {
-
         viewModelScope.launch {
-
             isLoading.value = true
-
             try {
-
-                val response =
-                    ApiClient.getApiClientWithHeader(token)
-                        ?.getLicenses()
+                val response = ApiClient.getApiClientWithHeader(token)
+                    ?.getLicenses()
 
                 isLoading.value = false
-
                 if (response?.isSuccessful == true) {
-
                     val body = response.body()
-
-                    if (body?.model != null) {
-
+                    if (body?.statusCode == 401) {
+                        unauthorizedError.value = true
+                    } else if (body?.model != null) {
                         licenseSuccess.value = body
-
                     } else {
-
-                        apiError.value =
-                            body?.message ?: "No licenses found"
+                        apiError.value = body?.message ?: "No licenses found"
                     }
-
                 } else {
-
-                    apiError.value =
-                        response?.message() ?: "Something went wrong"
+                    if (response?.code() == 401) {
+                        unauthorizedError.value = true
+                    } else {
+                        apiError.value = response?.message() ?: "Something went wrong"
+                    }
                 }
-
             } catch (e: Exception) {
-
                 isLoading.value = false
-
-                apiError.value =
-                    ResponseHandler()
+                if (e is retrofit2.HttpException && e.code() == 401) {
+                    unauthorizedError.value = true
+                } else {
+                    apiError.value = ResponseHandler()
                         .handleException<String>(e)
                         .message ?: "Network Error"
+                }
             }
         }
     }
 
-    //** get tracks api  **//
-
+    //--------------------------------------------------
+    // Fetches paginated user recorded tracking routes lists.
+    //--------------------------------------------------
     fun getTracks(
         token: String,
         page: Int,
         pageSize: Int
-    ){
-
+    ) {
         viewModelScope.launch {
-
             isLoading.value = true
-
-            try{
-
-                val response =
-                    ApiClient.getApiClientWithHeader(token)
-                        ?.getTracks(page,pageSize)
+            try {
+                val response = ApiClient.getApiClientWithHeader(token)
+                    ?.getTracks(page, pageSize)
 
                 isLoading.value = false
-
-                if(response?.isSuccessful == true){
-
-                    trackSuccess.value = response.body()
-
-                }else{
-
-                    apiError.value = response?.message()
+                if (response?.isSuccessful == true) {
+                    val body = response.body()
+                    if (body?.statusCode == 401) {
+                        unauthorizedError.value = true
+                    } else {
+                        trackSuccess.value = body
+                    }
+                } else {
+                    if (response?.code() == 401) {
+                        unauthorizedError.value = true
+                    } else {
+                        apiError.value = response?.message()
+                    }
                 }
-
-            }catch (e:Exception){
-
+            } catch (e: Exception) {
                 isLoading.value = false
-
-                apiError.value =
-                    ResponseHandler()
+                if (e is retrofit2.HttpException && e.code() == 401) {
+                    unauthorizedError.value = true
+                } else {
+                    apiError.value = ResponseHandler()
                         .handleException<String>(e).message
+                }
             }
-
         }
-
     }
 }

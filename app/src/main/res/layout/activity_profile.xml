@@ -184,13 +184,13 @@
         </androidx.cardview.widget.CardView>
 
         <!-- Storage Card -->
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             app:cardCornerRadius="14dp"
             app:cardElevation="2dp"
+            android:visibility="gone"
             app:cardBackgroundColor="@color/white">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -211,6 +211,42 @@
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/inter_regular"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Offline Download Maps -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardOfflineMaps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_map_green"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="Offline Download Maps"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"/>
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_arrow_black"/>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

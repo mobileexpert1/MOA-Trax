@@ -167,7 +167,7 @@
 
 
         <!-- Login Button -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
             style="@style/ThemeBtnBoldLargeGreen"
             android:text="@string/log_in"

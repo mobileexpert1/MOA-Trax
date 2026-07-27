@@ -11,6 +11,7 @@
         android:id="@+id/statusBarSpace"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#007F56"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -48,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cedar Ridge Hollow"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:fontFamily="@font/inter_semibold"/>
 
             <TextView
@@ -57,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="Madison County, GA"
                 android:textColor="@color/textview_gray"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 android:fontFamily="@font/inter_regular"/>
         </LinearLayout>
 
@@ -159,8 +160,20 @@
                 android:src="@drawable/ic_direction" />
         </RelativeLayout>
 
-    </LinearLayout>
-
+    </LinearLayout>   <!-- ADD THIS -->
+    <!-- Single Map Style Toggle Button (Light/Satellite) -->
+    <ImageView
+        android:id="@+id/ivMapStyleToggle"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/img_satellite"
+        android:background="@drawable/bg_background_shadow"
+        android:elevation="6dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layoutInfoCards" />
 
     <!-- ================= INFO CARDS ================= -->
 
@@ -205,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/acres"
-                android:textColor="@color/textview_gray"
+                android:textColor="@color/black"
                 android:textSize="10sp"
                 android:fontFamily="@font/inter_regular"/>
         </LinearLayout>
@@ -241,7 +254,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/valid"
-                android:textColor="@color/textview_gray"
+                android:textColor="@color/black"
                 android:textSize="10sp"
                 android:fontFamily="@font/inter_regular"/>
 
@@ -279,7 +292,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/map"
-                android:textColor="@color/textview_gray"
+                android:textColor="@color/black"
                 android:textSize="10sp"
                 android:fontFamily="@font/inter_regular"/>
 

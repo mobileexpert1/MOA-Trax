@@ -28,9 +28,12 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
-import com.google.android.gms.tasks.OnCanceledListener;
 
 public class LocationProvider implements LifecycleObserver {
+
+    //==============================================================================
+    // Variables
+    //==============================================================================
 
     private EasyLocationCallback callback;
     private Context context;
@@ -46,6 +49,9 @@ public class LocationProvider implements LifecycleObserver {
     private int numberOfUpdates;
     private double Latitude = 0.0, Longitude = 0.0;
 
+    //--------------------------------------------------
+    // Constructor mapping builder specifications parameters.
+    //--------------------------------------------------
     private LocationProvider(final Builder builder) {
         context = builder.context;
         callback = builder.callback;
@@ -55,11 +61,21 @@ public class LocationProvider implements LifecycleObserver {
         numberOfUpdates = builder.numberOfUpdates;
     }
 
+    //==============================================================================
+    // Location Request Functions
+    //==============================================================================
+
+    //--------------------------------------------------
+    // Submits request updates payload to the FusedLocationProviderClient.
+    //--------------------------------------------------
     @SuppressLint("MissingPermission")
     public void requestLocationUpdate() {
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
     }
 
+    //--------------------------------------------------
+    // Establishes connection to GooglePlayServices client.
+    //--------------------------------------------------
     private void connectGoogleClient() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int resultCode = googleAPI.isGooglePlayServicesAvailable(context);
@@ -71,16 +87,28 @@ public class LocationProvider implements LifecycleObserver {
         }
     }
 
+    //==============================================================================
+    // Lifecycle Event Observers
+    //==============================================================================
+
+    //--------------------------------------------------
+    // Lifecycle onCreate hook callback.
+    //--------------------------------------------------
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     private void onCreateLocationProvider() {
-
     }
 
+    //--------------------------------------------------
+    // Lifecycle onResume hook initiating the GoogleApiClient.
+    //--------------------------------------------------
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     private void onLocationResume() {
         buildGoogleApiClient();
     }
 
+    //--------------------------------------------------
+    // Constructs GoogleApiClient configurations and binds location settings check.
+    //--------------------------------------------------
     @SuppressLint("MissingPermission")
     private synchronized void buildGoogleApiClient() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
@@ -124,12 +152,7 @@ public class LocationProvider implements LifecycleObserver {
                                 case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
                                     showLog("Location Settings are Inadequate, and Cannot be fixed here. Fix in Settings");
                             }
-                        }).addOnCanceledListener(new OnCanceledListener() {
-                            @Override
-                            public void onCanceled() {
-                                showLog("onCanceled");
-                            }
-                        });
+                        }).addOnCanceledListener(() -> showLog("onCanceled"));
                     }
 
                     @Override
@@ -138,12 +161,7 @@ public class LocationProvider implements LifecycleObserver {
                         callback.onGoogleAPIClient(mGoogleApiClient, "Connection Suspended");
                     }
                 })
-                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        callback.onGoogleAPIClient(mGoogleApiClient, "" + connectionResult.getErrorCode() + " " + connectionResult.getErrorMessage());
-                    }
-                })
+                .addOnConnectionFailedListener(connectionResult -> callback.onGoogleAPIClient(mGoogleApiClient, "" + connectionResult.getErrorCode() + " " + connectionResult.getErrorMessage()))
                 .addApi(LocationServices.API)
                 .build();
 
@@ -154,27 +172,24 @@ public class LocationProvider implements LifecycleObserver {
             public void onLocationResult(final LocationResult locationResult) {
                 super.onLocationResult(locationResult);
 
-                Latitude = locationResult.getLastLocation().getLatitude();
-                Longitude = locationResult.getLastLocation().getLongitude();
+                if (locationResult.getLastLocation() != null) {
+                    Latitude = locationResult.getLastLocation().getLatitude();
+                    Longitude = locationResult.getLastLocation().getLongitude();
 
-                if (Latitude == 0.0 && Longitude == 0.0) {
-                    showLog("New Location Requested");
-                    requestLocationUpdate();
-                } else {
-                    callback.onLocationUpdated(Latitude, Longitude);
+                    if (Latitude == 0.0 && Longitude == 0.0) {
+                        showLog("New Location Requested");
+                        requestLocationUpdate();
+                    } else {
+                        callback.onLocationUpdated(Latitude, Longitude);
+                    }
                 }
             }
         };
     }
 
-    /*public LatLng getLastLocation() {
-        if ( ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_COARSE_LOCATION ) == PackageManager.PERMISSION_GRANTED ) {
-            Location location = mFusedLocationClient.getLastLocation().getResult();
-            return new LatLng(location.getLatitude(), location.getLongitude());
-        }
-        return null;
-    }*/
-
+    //--------------------------------------------------
+    // Removes Location updates and triggers callback updates.
+    //--------------------------------------------------
     @SuppressLint("MissingPermission")
     public void removeUpdates() {
         try {
@@ -185,15 +200,20 @@ public class LocationProvider implements LifecycleObserver {
         }
     }
 
+    //--------------------------------------------------
+    // Prints error log messages to logcat.
+    //--------------------------------------------------
     private void showLog(String message) {
         Log.e("LocationProvider", "" + message);
     }
 
+    //==============================================================================
+    // Interfaces & Builder Classes
+    //==============================================================================
+
     public interface EasyLocationCallback {
         void onGoogleAPIClient(GoogleApiClient googleApiClient, String message);
-
         void onLocationUpdated(double latitude, double longitude);
-
         void onLocationUpdateRemoved();
     }
 
@@ -209,11 +229,13 @@ public class LocationProvider implements LifecycleObserver {
             this.context = context;
         }
 
+        //--------------------------------------------------
+        // Builds and returns the prepared LocationProvider instance.
+        //--------------------------------------------------
         public LocationProvider build() {
             if (callback == null) {
                 Toast.makeText(context, "EasyLocationCallback listener can not be null", Toast.LENGTH_SHORT).show();
             }
-
             return new LocationProvider(this);
         }
 

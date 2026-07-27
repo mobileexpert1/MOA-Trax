@@ -85,5 +85,8 @@
     <string name="save_the_track_to_access_it_at_any_time">Save the track to access it at any time.</string>
     <string name="do_you_want_to_save_nthis_track">Do you want to save\nthis track?</string>
     <string name="location_permission_is_required_to_use_this_app">Location permission is required to use this app.</string>
+    <string name="are_you_sure_you_want_to_delete_this_downloaded_map">Are you sure you want to delete this downloaded map?</string>
+    <string name="delete_downloaded_map">Delete downloaded map?</string>
+    <string name="delete">Delete</string>
 
 </resources>

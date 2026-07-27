@@ -6,10 +6,19 @@ data class GetSingleTrackResponse(
     val statusCode: Int,
     val success: Boolean,
     val data: SingleTrackData?,
-    val message: String?
+    val message: String?,
+    val page: Int?,
+    val pageSize: Int?,
+    val totalCount: Int?,
+    val totalPages: Int?
 )
 
 data class SingleTrackData(
+    val type: String?,
+    val features: List<TrackFeature>?
+)
+
+data class TrackFeature(
     val type: String?,
     val properties: SingleTrackProperties?,
     val geometry: SingleTrackGeometry?
@@ -17,9 +26,13 @@ data class SingleTrackData(
 
 data class SingleTrackProperties(
 
-    val trackId: Int,
+    val mapLayer: String?,
 
-    val licenseContractId: Int,
+    val geometryType: String?,
+
+    val trackId: Int?,
+
+    val licenseContractId: Int?,
 
     val trackName: String?,
 
@@ -33,19 +46,23 @@ data class SingleTrackProperties(
 
     val endedAtUtc: String?,
 
-    val durationSeconds: Int,
+    val durationSeconds: Double?,
 
-    val totalDistanceMeters: Double,
+    val totalDistanceMeters: Double?,
 
-    val totalPoints: Int,
+    val pace: Double?,
+
+    val elevation: Double?,
+
+    val totalPoints: Int?,
 
     val stroke: String?,
 
     @SerializedName("stroke-width")
-    val strokeWidth: Int,
+    val strokeWidth: Int?,
 
     @SerializedName("stroke-opacity")
-    val strokeOpacity: Double
+    val strokeOpacity: Double?
 )
 
 data class SingleTrackGeometry(

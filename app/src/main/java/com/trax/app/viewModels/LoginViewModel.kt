@@ -18,26 +18,30 @@ import javax.crypto.spec.SecretKeySpec
 
 class LoginViewModel : BaseViewModel() {
 
-    var passVisible = true
+    //==============================================================================
+    // Variables
+    //==============================================================================
 
+    var passVisible = true
     val loginSuccess = MutableLiveData<LoginResponse?>()
     val socialLoginSuccess = MutableLiveData<LoginResponse?>()
 
+    //==============================================================================
+    // API Calls
+    //==============================================================================
 
-
+    //--------------------------------------------------
+    // Dispatches a standard user login credentials request.
+    //--------------------------------------------------
     fun loginRequest(
         email: String,
         password: String,
         deviceToken: String,
         deviceType: Int
     ) {
-
         viewModelScope.launch {
-
             isLoading.value = true
-
             try {
-
                 val response = ApiClient.getApiClient()!!.loginRequest(
                     LoginRequest(
                         Email = email,
@@ -49,29 +53,18 @@ class LoginViewModel : BaseViewModel() {
                 )
 
                 isLoading.value = false
-
                 if (response.isSuccessful) {
-
                     val body = response.body()
-
                     if (body != null && body.model != null) {
-
                         loginSuccess.value = body
-
                     } else {
-
                         apiError.value = body?.message ?: "Something went wrong"
                     }
-
                 } else {
-
                     apiError.value = response.message()
                 }
-
             } catch (e: Exception) {
-
                 isLoading.value = false
-
                 apiError.value = ResponseHandler()
                     .handleException<String>(e)
                     .message ?: "Network Error"
@@ -79,6 +72,9 @@ class LoginViewModel : BaseViewModel() {
         }
     }
 
+    //--------------------------------------------------
+    // Dispatches a social authentication login payload.
+    //--------------------------------------------------
     fun socialLoginRequest(
         email: String,
         authKey: String,
@@ -86,13 +82,9 @@ class LoginViewModel : BaseViewModel() {
         deviceToken: String,
         deviceType: Int
     ) {
-
         viewModelScope.launch {
-
             isLoading.value = true
-
             try {
-
                 val response = ApiClient.getApiClient()!!.socialLoginRequest(
                     SocialLoginRequest(
                         Email = email,
@@ -104,29 +96,18 @@ class LoginViewModel : BaseViewModel() {
                 )
 
                 isLoading.value = false
-
                 if (response.isSuccessful) {
-
                     val body = response.body()
-
                     if (body != null && body.model != null) {
-
                         socialLoginSuccess.value = body
-
                     } else {
-
                         apiError.value = body?.message ?: "Something went wrong"
                     }
-
                 } else {
-
                     apiError.value = response.message()
                 }
-
             } catch (e: Exception) {
-
                 isLoading.value = false
-
                 apiError.value = ResponseHandler()
                     .handleException<String>(e)
                     .message ?: "Network Error"
@@ -134,105 +115,66 @@ class LoginViewModel : BaseViewModel() {
         }
     }
 
+    //==============================================================================
+    // Cryptography Utility Functions
+    //==============================================================================
+
+    //--------------------------------------------------
+    // Encrypts a text string using AES/CBC/PKCS7Padding specifications.
+    //--------------------------------------------------
     fun encrypt(strToEncrypt: String): String? {
-
         return try {
+            val ivParameterSpec = IvParameterSpec(
+                Base64.decode(AppConstant.iv, Base64.DEFAULT)
+            )
 
-            val ivParameterSpec =
-                IvParameterSpec(
-                    Base64.decode(
-                        AppConstant.iv,
-                        Base64.DEFAULT
-                    )
-                )
-
-            val factory =
-                SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
-
+            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
             val spec = PBEKeySpec(
                 AppConstant.secretKey.toCharArray(),
                 Base64.decode(AppConstant.salt, Base64.DEFAULT),
                 10000,
                 256
             )
-
             val tmp = factory.generateSecret(spec)
+            val secretKey = SecretKeySpec(tmp.encoded, "AES")
 
-            val secretKey =
-                SecretKeySpec(
-                    tmp.encoded,
-                    "AES"
-                )
-
-            val cipher =
-                Cipher.getInstance("AES/CBC/PKCS7Padding")
-
-            cipher.init(
-                Cipher.ENCRYPT_MODE,
-                secretKey,
-                ivParameterSpec
-            )
+            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParameterSpec)
 
             Base64.encodeToString(
-                cipher.doFinal(
-                    strToEncrypt.toByteArray(Charsets.UTF_8)
-                ),
+                cipher.doFinal(strToEncrypt.toByteArray(Charsets.UTF_8)),
                 Base64.DEFAULT
             )
-
         } catch (e: Exception) {
             null
         }
     }
 
+    //--------------------------------------------------
+    // Decrypts an AES/CBC/PKCS7Padding encrypted string.
+    //--------------------------------------------------
     fun decrypt(strToDecrypt: String): String? {
-
         return try {
+            val ivParameterSpec = IvParameterSpec(
+                Base64.decode(AppConstant.iv, Base64.DEFAULT)
+            )
 
-            val ivParameterSpec =
-                IvParameterSpec(
-                    Base64.decode(
-                        AppConstant.iv,
-                        Base64.DEFAULT
-                    )
-                )
-
-            val factory =
-                SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
-
+            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
             val spec = PBEKeySpec(
                 AppConstant.secretKey.toCharArray(),
                 Base64.decode(AppConstant.salt, Base64.DEFAULT),
                 10000,
                 256
             )
-
             val tmp = factory.generateSecret(spec)
+            val secretKey = SecretKeySpec(tmp.encoded, "AES")
 
-            val secretKey =
-                SecretKeySpec(
-                    tmp.encoded,
-                    "AES"
-                )
-
-            val cipher =
-                Cipher.getInstance("AES/CBC/PKCS7Padding")
-
-            cipher.init(
-                Cipher.DECRYPT_MODE,
-                secretKey,
-                ivParameterSpec
-            )
+            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+            cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParameterSpec)
 
             String(
-                cipher.doFinal(
-                    Base64.decode(
-                        strToDecrypt,
-                        Base64.DEFAULT
-                    )
-                )
+                cipher.doFinal(Base64.decode(strToDecrypt, Base64.DEFAULT))
             )
-
         } catch (e: Exception) {
             null
         }
